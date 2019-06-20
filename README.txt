@@ -1,3 +1,19 @@
+How to run the application.
+
+Steps:
+
+1 Install Nodejs on your local machine
+
+2 open terminal/command prompt in the folder
+
+3 type “nom start” to run the application
+
+4 use Chrome browser to visit “localhost:8080” 
+
+
+PROJECT INFO:
+
+
 TECHNOLOGIES : 
 
 NodeJs
@@ -81,10 +97,9 @@ The resulting HTML is inserted into the DOM so that the <table> appears below th
 	==============================================
 
 If the user enters text into the search text box and hits the SEARCH
-button, the appointments area should clear and getAppointments() should
-be called with text from the search box.  If the search text box is empty
-when the SEARCH button is clicked, then ALL of the appointments should appear.
-This should dynamically refresh the Table DOM, and not refresh the entire page.
+button, the appointments area clears. If the search text box is empty
+when the SEARCH button is clicked, then ALL of the appointments appear.
+This dynamically refreshes the Table DOM, and does not refresh the entire page.
 
 	==============================================
 	=  
@@ -143,4 +158,4 @@ pressed, the form is hidden and the "ADD" button becomes "NEW" again.
 	==============================================
 
 When data is entered into the form and the "ADD" button is pressed, the
-form should be submitted to the back-end.  The JQuery script updates the page accordingly.
+form is submitted to the back-end.  The JQuery script updates the page accordingly.
