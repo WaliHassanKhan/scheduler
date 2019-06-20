@@ -10,6 +10,9 @@ Steps:
 
 4 use Chrome browser to visit “localhost:8080” 
 
+EXTRA:
+
+**Run command "node populate.js" to repopulate the database to default entries.**
 
 PROJECT INFO:
 
