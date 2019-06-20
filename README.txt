@@ -6,7 +6,7 @@ Steps:
 
 2 open terminal/command prompt in the folder
 
-3 type “nom start” to run the application
+3 type “npm start” to run the application
 
 4 use Chrome browser to visit “localhost:8080” 
 
