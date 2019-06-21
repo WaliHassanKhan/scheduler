@@ -35,7 +35,7 @@ This is a very simple web application which handles appointments.
 
 The appointments are stored in a MongoDB Atlas (cloud database) containing two attributes.
 
-(1) a date-time column which records the appointment's time and (2) a description column.
+(1) a date-time attribute which records the appointment's time and (2) a description column.
 
 The back-end is a node's server which handles requests
 from the browser.  There are 3 types of requests which the server
