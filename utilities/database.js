@@ -9,7 +9,7 @@ db.once('open',function(){
   var Model = new mongoose.model('eAppointment',MongooseDB.appointmentSchema);
   module.exports.getAppointments = function(callback){
     Model.find().then(function(result){
-      callback(result);
+      callback(result); //sending the data back to the function that called this database function
     });
   };
   module.exports.searchAppointments = function(descriptionInput,callback){
