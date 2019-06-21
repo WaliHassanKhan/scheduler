@@ -1,8 +1,13 @@
-The app is deployed on Heroku
+HEROKU:
+The app is deployed on Heroku. Use the link below to access the website.
 https://walis-scheduler.herokuapp.com/
 
+EXTRA:
+**Run command "node populate.js" to repopulate the database to default entries.**
 
-How to run the application on your local machine.
+
+
+HOW TO RUN APPLICATION ON YOUR LOCAL MACHINE
 
 Steps:
 
@@ -14,9 +19,7 @@ Steps:
 
 4 use Chrome browser to visit “localhost:8080” 
 
-EXTRA:
 
-**Run command "node populate.js" to repopulate the database to default entries.**
 
 PROJECT INFO:
 
