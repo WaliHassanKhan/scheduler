@@ -2,12 +2,13 @@ The app is deployed on Heroku
 https://walis-scheduler.herokuapp.com/
 
 
-How to run the application.
+How to run the application on your local machine.
+
 Steps:
 
 1 Install Nodejs on your local machine
 
-2 open terminal/command prompt in the folder
+2 open terminal/command prompt in the destination folder
 
 3 type “npm start” to run the application
 
@@ -38,7 +39,7 @@ This application handles appointments.
 
 The appointments are stored in a MongoDB Atlas (cloud database) containing two attributes.
 
-(1) a date-time attribute which records the appointment's time and (2) a description column.
+(1) a date-time attribute which records the appointment's time and date (2) a description column.
 
 The back-end is a node's server which handles requests
 from the browser.  There are 3 types of requests which the server
@@ -46,8 +47,8 @@ from the browser.  There are 3 types of requests which the server
 
 1. If no parameters are passed to the back-end the HTML document is sent to the client.
 
-2. If any of the AJAX parameters are provided, then this request is
-   considered to be an AJAX call and the server renders the results
+2. If any of the AJAX parameters containing search description, then this request is
+   considered to be an AJAX call and the server sends the results
    as a JSON document. The JQuery script updates the page accordingly.
 
 3. If this is a form submission, the server will add a NEW
@@ -70,13 +71,11 @@ be an (initially empty) area for displaying the appointments in a table.
 	=  <appointments table will be here>
 	=============================================
 
-The appointments area is initially empty. The document's jQuery DOM
-ready function will contain a call to a Javascript
-getAppointments() function.
+The appointments area is initially empty. The document's jQuery function will call the provided API to get the appointments from the server.
 
-The Javascript getAppointments() function populates the appointments
-area (the DOM above). getAppointments() will accept an optional search string.
-getAppointments() issues an AJAX 'getAppointments' call to the back-end,
+The function then populates the appointments
+table . The function will accept an optional search string.
+The function issues an AJAX call to the back-end,
 passing the optional search string. The back-end will reply with a JSON
 document containing the matching appointments, and the front-end will use the
 resulting JSON object to render the data into the HTML <table> element.  
@@ -103,7 +102,7 @@ The resulting HTML is inserted into the DOM so that the <table> appears below th
 	==============================================
 
 If the user enters text into the search text box and hits the SEARCH
-button, the appointments area clears. If the search text box is empty
+button, or presses enter the JQuery function is activated. If the search text box is empty
 when the SEARCH button is clicked, then ALL of the appointments appear.
 This dynamically refreshes the Table DOM, and does not refresh the entire page.
 
