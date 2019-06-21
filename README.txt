@@ -1,5 +1,8 @@
-How to run the application.
+The app is deployed on Heroku
+https://walis-scheduler.herokuapp.com/
 
+
+How to run the application.
 Steps:
 
 1 Install Nodejs on your local machine
@@ -28,10 +31,10 @@ CSS
 Bootstrap
 
 
-PROJECT REQUIREMENTS : 
+PROJECT INFORMATION : 
 
 
-This is a very simple web application which handles appointments.
+This application handles appointments.
 
 The appointments are stored in a MongoDB Atlas (cloud database) containing two attributes.
 
@@ -127,7 +130,7 @@ The page also contain a hidden form which contains fields for
 adding a new appointment to the database.  Pressing the "NEW" button
 changes the "NEW" button to "ADD" and shows the hidden form.
 
-The hidden form should include a "CANCEL" button.  If the "CANCEL" button is
+The hidden form include a "CANCEL" button.  If the "CANCEL" button is
 pressed, the form is hidden and the "ADD" button becomes "NEW" again.
 
 	==============================================
