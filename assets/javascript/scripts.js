@@ -1,5 +1,7 @@
-var domain = 'http://localhost:8080'
-// var domain = 'https://walis-scheduler.herokuapp.com'
+// var domain = 'http://localhost:8080'
+var domain = 'https://walis-scheduler.herokuapp.com'
+var month_names =  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var timeHours = ['00','01','02','03','04','05','06','07','08','09','10','11','12','01','02','03','04','05','06','07','08','09','10','11'];
 $(document).ready(function() {
   $("#newAppForm").hide();
   $("#addButton").hide();
@@ -42,7 +44,19 @@ $(document).ready(function() {
             $("#tableResultInfo").hide('slow');
             $("#appointmentTable").show('fast');
             for (var i = 0;i < data.length;i++){
-              $('#appointmentTable tr:last').after('<tr><td>'+data[i].time.split("T")[0]+'</td><td>'+data[i].time.split("T")[1].split('.')[0]+'</td><td>'+data[i].description+'</td></tr>');
+              var timeArray = data[i].time.split("T")[1].split(':');
+              var ampm = 'AM';
+              if (parseInt(timeArray[0])>=12){
+                ampm = 'PM';
+              }
+              timeArray[0] =  timeHours[parseInt(timeArray[0])%12];
+              var time = timeArray[0] +':'+ timeHours[1]
+              var date = data[i].time.split("T")[0].split('-');
+              var c;
+              c=date[0], date[0]=date[1], date[1]=c;
+              c=date[1], date[1]=date[2], date[2]=c;
+              date[0] = month_names[parseInt(date[0])-1];
+              $('#appointmentTable tr:last').after('<tr><td>'+date.join('-')+'</td><td>'+time+' '+ ampm+'</td><td>'+data[i].description+'</td></tr>');
             }
           }
      }
