@@ -1,3 +1,5 @@
+var domain = 'http://localhost:8080'
+// var domain = 'https://walis-scheduler.herokuapp.com'
 $(document).ready(function() {
   $("#newAppForm").hide();
   $("#addButton").hide();
@@ -30,7 +32,7 @@ $(document).ready(function() {
     $.ajax({
      type: "GET",
      dataType: "json",
-     url: "http://localhost:8080/search?description="+$('#searchBoxText').val(),
+     url: domain+"/search?description="+$('#searchBoxText').val(),
      success: function(data){
           $("#appointmentTable").find("tr:gt(0)").remove();
           if (data.length==0){
@@ -51,11 +53,10 @@ $(document).ready(function() {
     var values = {"date":$("#dateText").val(),"time":$("#timeText").val(),"description":$("#descriptionInput").val()};
     $("#td_id").attr('class', 'newClass');
     $.ajax({
-        url : "http://localhost:8080/add",
+        url : domain+"/add",
         type: "POST",
         data: values,
         success    : function(){
-          // ("gridView");
             $("#successMessage").removeClass("text-danger");
             $("#successMessage").addClass("text-success");
             $("#successMessage").text("Successly Added!");
@@ -72,7 +73,6 @@ $(document).ready(function() {
             $('#viewButton').trigger('click');
         }
     }).fail(function (jqXHR, textStatus, error) {
-
           $("#successMessage").removeClass("text-success");
           $("#successMessage").addClass("text-danger");
           $("#successMessage").text("Failed to Add!");
