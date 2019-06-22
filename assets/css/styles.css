@@ -4,6 +4,8 @@
 }
 #newButton {
   margin-right: 10px;
+  width: 58px;
+  height: 37px;
 }
 #addButton {
   margin-right: 10px;
@@ -13,10 +15,29 @@
 }
 
 body {
-  margin-bottom: 50px;
+  margin-bottom: 150px;
 }
 
 #successMessage
 {
     margin-top:auto;
+}
+.trashButton{
+  height: 30px;
+  width: 30px;
+  background-image: url("../images/deleteButton2.png");
+  background-size: 30px;
+  background-position: -01px -01px;
+  border-radius: 35px;
+  transition: all 0.2s ease-in-out;
+}
+.trashButton:hover {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 5px 25px rgba(145, 92, 182, .8);
+}
+.trashButton:active {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 5px 25px rgba(255, 255, 182, .8);
+ transition: all 0.2s ease-in-out;
+ box-shadow, 0px 0px 5px #ddd;
 }
