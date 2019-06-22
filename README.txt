@@ -167,3 +167,7 @@ pressed, the form is hidden and the "ADD" button becomes "NEW" again.
 
 When data is entered into the form and the "ADD" button is pressed, the
 form is submitted to the back-end.  The JQuery script updates the page accordingly.
+
+The entries are sorted based on Time and Date.
+
+UPDATE: A delete button has been added to the website for removing any single entry.
