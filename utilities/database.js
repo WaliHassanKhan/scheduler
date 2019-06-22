@@ -8,12 +8,12 @@ db.on('error',console.error.bind(console,'error in connection'));
 db.once('open',function(){
   var Model = new mongoose.model('eAppointment',MongooseDB.appointmentSchema);
   module.exports.getAppointments = function(callback){
-    Model.find().then(function(result){
+    Model.find().sort('time').then(function(result){
       callback(result); //sending the data back to the function that called this database function
     });
   };
   module.exports.searchAppointments = function(descriptionInput,callback){
-    Model.find({$text:{$search:descriptionInput}}).then(function(result){
+    Model.find({$text:{$search:descriptionInput}}).sort('time').then(function(result){
       callback(result);
     });
   };
@@ -26,5 +26,13 @@ db.once('open',function(){
       }
       callback();
     });
+  };
+  module.exports.removeAppointment = function(input,callback){
+    Model.findByIdAndRemove({'_id': mongoose.Types.ObjectId(input._id)}).then(function(err,result){
+      if (err){
+        // console.log(err);
+      }
+      callback();
+    })
   };
 });
