@@ -18,15 +18,15 @@ db.once('open',function(){
 
 var data = [
   {
-    time: Date.now(),
+    time: new Date('2019-06-30T15:12:00.000+00:00'),
     description: 'dentist appointment'
   },
   {
-    time: Date.now()+10100000,
+    time: new Date('2019-06-29T22:44:00.000+00:00'),
     description:'meeting'
   },
   {
-    time: Date.now()+201000000,
+    time: new Date('2019-06-29T15:00:00.000+00:00'),
     description: 'graduation ceremony'
   }
 ]
