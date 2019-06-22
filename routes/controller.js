@@ -31,8 +31,15 @@ router.get('/search',function(req,res){
 router.post('/add',urlencodedParser,function(req,res){
   var callback = function(reply){
     res.send({success:true});
-  }
+  };
   database.addAppointment(req.body,callback)
+});
+
+router.delete('/remove',urlencodedParser,function(req,res){
+  var callback = function(reply){
+    res.send({success:true});
+  };
+  database.removeAppointment(req.body,callback);
 });
 
 module.exports = router;
