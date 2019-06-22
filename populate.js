@@ -26,7 +26,18 @@ var data = [
     description:'meeting'
   },
   {
-    time: new Date('2019-06-29T15:00:00.000+00:00'),
+    time: new Date('2019-07-29T15:00:00.000+00:00'),
+    description: 'Meeting with John'
+  },{
+    time: new Date('2019-07-10T15:12:00.000+00:00'),
+    description: 'Deadline for the project'
+  },
+  {
+    time: new Date('2019-11-29T22:44:00.000+00:00'),
+    description:'Defeat the Night king'
+  },
+  {
+    time: new Date('2019-11-29T15:00:00.000+00:00'),
     description: 'graduation ceremony'
   }
 ]
