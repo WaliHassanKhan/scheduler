@@ -170,4 +170,4 @@ form is submitted to the back-end.  The JQuery script updates the page according
 
 The entries are sorted based on Time and Date.
 
-UPDATE: A delete button has been added to the website for removing any single entry.
+A delete button is also included alongside each entry which deletes that particular entry.
