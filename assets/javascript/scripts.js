@@ -41,7 +41,7 @@ $(document).ready(function() {
             $("#appointmentTable").hide();
             $("#tableResultInfo").show('fast');
           }else{
-            $("#tableResultInfo").hide('slow');
+            $("#tableResultInfo").hide();
             $("#appointmentTable").show('fast');
             for (var i = 0;i < data.length;i++){
               var timeArray = data[i].time.split("T")[1].split(':');
@@ -50,13 +50,13 @@ $(document).ready(function() {
                 ampm = 'PM';
               }
               timeArray[0] =  timeHours[parseInt(timeArray[0])%12];
-              var time = timeArray[0] +':'+ timeHours[1]
+              var time = timeArray[0] +':'+ timeArray[1]
               var date = data[i].time.split("T")[0].split('-');
               var c;
               c=date[0], date[0]=date[1], date[1]=c;
               c=date[1], date[1]=date[2], date[2]=c;
               date[0] = month_names[parseInt(date[0])-1];
-              $('#appointmentTable tr:last').after('<tr><td>'+date.join('-')+'</td><td>'+time+' '+ ampm+'</td><td>'+data[i].description+'</td></tr>');
+              $('#appointmentTable tr:last').after('<tr><td>'+date.join('-')+'</td><td>'+time+' '+ ampm+'</td><td>'+data[i].description+'</td><td><button id="'+data[i]._id+'" name="delete" class="trashButton" type="button"/></button></td></tr>');
             }
           }
      }
@@ -65,26 +65,34 @@ $(document).ready(function() {
   $("#newAppForm").submit(function(event){
     event.preventDefault();
     var values = {"date":$("#dateText").val(),"time":$("#timeText").val(),"description":$("#descriptionInput").val()};
-    $("#td_id").attr('class', 'newClass');
+    // $("#td_id").attr('class', 'newClass');
     $.ajax({
         url : domain+"/add",
         type: "POST",
         data: values,
-        success    : function(){
-            $("#successMessage").removeClass("text-danger");
-            $("#successMessage").addClass("text-success");
-            $("#successMessage").text("Successly Added!");
-            $("#successMessage").show();
-            $("#successMessage").delay(1500).fadeOut('slow');
+        success    : function(res){
+            if (res.success==true){
+              $("#successMessage").removeClass("text-danger");
+              $("#successMessage").addClass("text-success");
+              $("#successMessage").text("Successly Added!");
+              $("#successMessage").show();
+              $("#successMessage").delay(1500).fadeOut('slow');
 
-            $("#addButton").hide();
-            $("#cancelButton").hide();
-            $("#newAppForm").hide('slow');
-            $("#newButton").show();
-            $("#dateText").val('');
-            $("#timeText").val('');
-            $("#descriptionInput").val('');
-            $('#viewButton').trigger('click');
+              $("#addButton").hide();
+              $("#cancelButton").hide();
+              $("#newAppForm").hide('slow');
+              $("#newButton").show();
+              $("#dateText").val('');
+              $("#timeText").val('');
+              $("#descriptionInput").val('');
+              $('#viewButton').trigger('click');
+            }else{
+              $("#successMessage").removeClass("text-success");
+              $("#successMessage").addClass("text-danger");
+              $("#successMessage").text("Failed to Add!");
+              $("#successMessage").show();
+              $("#successMessage").delay(1000).fadeOut('slow');
+            }
         }
     }).fail(function (jqXHR, textStatus, error) {
           $("#successMessage").removeClass("text-success");
@@ -96,6 +104,38 @@ $(document).ready(function() {
   });
 
 });
+$(document).on('click', ".trashButton", function() {
+   var values = {_id:this.id};
+   $.ajax({
+       url : domain+"/remove",
+       type: "DELETE",
+       data: values,
+       success : function(res){
+           if (res.success==true){
+             $("#successMessage").removeClass("text-danger");
+             $("#successMessage").addClass("text-success");
+             $("#successMessage").text("Removed Successfully!");
+             $("#successMessage").show();
+             $("#successMessage").delay(1500).fadeOut('slow');
+             $("#viewButton").click();
+           }else{
+             $("#successMessage").removeClass("text-success");
+             $("#successMessage").addClass("text-danger");
+             $("#successMessage").text("Failed to Delete Entry!");
+             $("#successMessage").show();
+             $("#successMessage").delay(1000).fadeOut('slow');
+           }
+       }
+   }).fail(function (jqXHR, textStatus, error) {
+         $("#successMessage").removeClass("text-success");
+         $("#successMessage").addClass("text-danger");
+         $("#successMessage").text("Failed to Remove Entry!");
+         $("#successMessage").show();
+         $("#successMessage").delay(1000).fadeOut('slow');
+     });
+});
+
+
 var today = new Date();
 
 dateText.min = today.toISOString().split("T")[0];
