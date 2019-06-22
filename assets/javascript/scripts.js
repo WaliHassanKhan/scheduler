@@ -1,5 +1,5 @@
-// var domain = 'http://localhost:8080'
-var domain = 'https://walis-scheduler.herokuapp.com'
+var domain = 'http://localhost:8080'
+// var domain = 'https://walis-scheduler.herokuapp.com'
 var month_names =  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var timeHours = ['00','01','02','03','04','05','06','07','08','09','10','11','12','01','02','03','04','05','06','07','08','09','10','11'];
 $(document).ready(function() {
